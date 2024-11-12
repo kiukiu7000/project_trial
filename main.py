@@ -14,3 +14,8 @@ import matplotlib.pyplot as plt
 x = 10
 print(x)
 print("Hello")
+print("testing")
+print("v5 is comign otu")
+
+y = 100
+print (x-y)
