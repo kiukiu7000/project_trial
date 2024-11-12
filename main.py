@@ -15,6 +15,8 @@ import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
+TF_ENABLE_ONEDNN_OPTS=0
+
 import os
 for dirname, _, filenames in  os.walk(""):
     for filename in filenames:
@@ -24,4 +26,14 @@ pd.options.display.max_columns = None
 
 # Load dataset
 data = pd.read_csv("WA_Fn-UseC_-HR-Employee-Attrition.csv")
-data.head()
+
+"""
+# Check data
+print(data.head)
+print(data.dtypes)
+print(data.isnull().sum())
+"""
+age_att=data.groupby(['Age','Attrition']).apply(lambda x:x['DailyRate'].count()).reset_index(name='Counts')
+print(px.line(age_att,x='Age',y='Counts',color='Attrition',title='Agewise Counts of People in an Organization'))
+
+print("End Program")
