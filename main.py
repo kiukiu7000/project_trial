@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import tensorflow as tf
 from tensorflow import keras
-#from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from keras._tf_keras.keras.preprocessing.image import ImageDataGenerator
 from torch.utils.data import DataLoader
 from torchvision import transforms
 import matplotlib.pyplot as plt
@@ -15,9 +15,10 @@ import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-TF_ENABLE_ONEDNN_OPTS=0
+
 
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
 for dirname, _, filenames in  os.walk(""):
     for filename in filenames:
         print(os.path.join(dirname, filename))
